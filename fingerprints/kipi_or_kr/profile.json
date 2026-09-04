@@ -1,0 +1,22 @@
+{
+  "domain": "kipi.or.kr",
+  "capability": "static",
+  "fetcher_type": "Fetcher",
+  "antibot_type": "none",
+  "antibot_strategy": "none",
+  "site_type": "static",
+  "selectors": {
+    "list_row": "table tbody tr:has(a[onclick*=kipinewsForm_submit])",
+    "title": "a::text",
+    "onclick": "a::attr(onclick)",
+    "reg_date": "td:nth-child(4)"
+  },
+  "pagination": {
+    "type": "url_param",
+    "param": "pageIndex",
+    "extra": "bbsId=BBSMSTR_FFFFFFFFFFFF"
+  },
+  "api_endpoints": [],
+  "notes": "입찰정보 게시판(eGovFrame 표준). GET selectBoardList.do?bbsId=...&pageIndex=N. 상세는 onclick=kipinewsForm_submit(nttId,bbsId)에서 nttId 파싱 후 GET selectBoardArticle.do?bbsId=...&nttId=. 이 보드는 입찰공고문/제안요청서가 첨부파일(hwpx/pdf)로만 제공되고 본문에 신청기간 텍스트가 거의 없음 — 신청기간 정규식 추출 fill률 낮음(관측 0/13), 첨부파일 파싱이 필요하면 별도 OCR/문서파싱 단계 추가 필요. 같은 site의 공지사항(BBSMSTR_EEEEEEEEEEEE)·KIPI소식(BBSMSTR_IIIIIIIIIIII) 게시판이 사업공고/행사성 정보를 더 담고 있을 수 있음(미확인, 사용자가 준 URL은 입찰정보만).",
+  "last_used": "2026-09-04"
+}

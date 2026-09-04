@@ -1,0 +1,45 @@
+{
+  "domain": "ip-navi.or.kr",
+  "capability": "api",
+  "fetcher_type": "FetcherSession",
+  "antibot_type": "none",
+  "antibot_strategy": "none",
+  "site_type": "api",
+  "selectors": {},
+  "pagination": {
+    "type": "form_post",
+    "param": "CurrentPage/pageNum",
+    "per_page": 20
+  },
+  "api_endpoints": [
+    {
+      "url": "/starklogin/announceList.navi",
+      "method": "POST",
+      "params": {
+        "dp_code": "DP1001|DP1002|DP1006",
+        "dp_code_kor": "특허|상표·디자인|전략산업지원",
+        "pageNum": "N",
+        "CurrentPage": "N",
+        "biz_year": "2026",
+        "notice_status": "",
+        "affiliation_code": "",
+        "select_company_flag": "",
+        "notice_title": ""
+      },
+      "field_mapping": {
+        "td1": "공고번호",
+        "td2 a": "사업명칭+moveDetail(seq)",
+        "td3": "접수기간(MM-DD~MM-DD,연도없음)",
+        "td4 img@alt": "공고상태(공고중/공고마감)"
+      }
+    },
+    {
+      "url": "/starklogin/announce_detail.navi?notice_seq=<seq>",
+      "method": "GET",
+      "params": {},
+      "field_mapping": {}
+    }
+  ],
+  "notes": "지원사업 공고 대시보드. 화면상 분류는 특허(DP1001)/상표·디자인(DP1002)/전략산업지원(DP1006) 3개뿐(더보기 확장 = 전체목록). 목록은 POST(평문, 위장불필요) — 응답 table에 tbody 태그가 없어 CSS는 \"table tr\"로 찾아야 함(첫 tr은 헤더). 접수기간에 연도가 없어 biz_year 파라미터 값을 그대로 붙임. 마감여부는 img[alt] 텍스트(공고중/공고마감) 그대로 사용 — 계산 불필요. 상세는 POST전용 UI(moveDetail)지만 GET announce_detail.navi?notice_seq=<seq> 로도 동일하게 열림(비공식이지만 안정적으로 동작 확인). 사업공고일 필드가 없어 접수기간 시작일로 대체(주의: 정확한 등록일 아님). 제목 앞 대괄호 태그(인천연계/충남연계/대전연계/강원연계)로 사업연계기관을 주관기관에 추가.",
+  "last_used": "2026-09-04"
+}

@@ -1,0 +1,22 @@
+{
+  "domain": "moip.go.kr",
+  "capability": "static",
+  "fetcher_type": "Fetcher",
+  "antibot_type": "none",
+  "antibot_strategy": "none",
+  "site_type": "static",
+  "selectors": {
+    "list_row": "table.tbl_list tbody tr",
+    "title": "td.bbs_tit a::text",
+    "href": "td.bbs_tit a::attr(href)",
+    "date": "td.bbs_date::text"
+  },
+  "pagination": {
+    "type": "form_post",
+    "param": "pageIndex",
+    "per_page_param": "cntPerPage(무시됨,10고정)"
+  },
+  "api_endpoints": [],
+  "notes": "IP지원사업 게시판(SCD0201381). 목록은 POST kpoBultnMgmt.do (menuCd/sysCd/parntMenuCd2 고정, pageIndex로 페이지네이션, cntPerPage는 서버가 무시하고 10건 고정). 상세는 GET kpoBultnDetail.do?menuCd=&ntatcSeq=&sysCd=&aprchId=BUT0000079. 신청기간/주관기관은 상세 본문 자유텍스트에서 정규식 추출(완전하지 않음, best-effort) — 담당 사업공고 발행처(한국지식재산보호원 등)는 본문 상단 \"OOO 사업공고 제…호\" 패턴에서 파싱.",
+  "last_used": "2026-09-04"
+}

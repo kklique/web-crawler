@@ -1,0 +1,22 @@
+{
+  "domain": "kista.re.kr",
+  "capability": "static",
+  "fetcher_type": "Fetcher",
+  "antibot_type": "none",
+  "antibot_strategy": "none",
+  "site_type": "static",
+  "selectors": {
+    "list_row": "table tbody tr:has(td.subject a)",
+    "title": "td.subject a::text",
+    "onclick": "td.subject a::attr(onclick)",
+    "reg_date": "td.date::text"
+  },
+  "pagination": {
+    "type": "url_param",
+    "param": "pageIndex",
+    "extra": "bbsId=BBSMSTR_000000000382"
+  },
+  "api_endpoints": [],
+  "notes": "사업정보 게시판. 목록 GET board.do?bbsId=...&pageIndex=N (10건/page, 등록일 내림차순). 상세는 onclick=\"javascript:fn_detail(nttNo)\" 에서 nttNo 파싱 후 GET boardDetail.do?bbsId=...&nttNo=. 신청기간은 상세 본문 자유텍스트(\"공고 기간\"/\"신청기간\" 등)에서 정규식 추출 — 연도가 아포스트로피 축약형('26.9.1.)으로 나오는 경우가 있어 사전에 20XX로 정규화 필요. 담당부서(예: 특허활용전략실)는 있으나 별도 파싱하지 않고 주관기관은 한국특허전략개발원(KISTA) 고정값 사용.",
+  "last_used": "2026-09-04"
+}

@@ -17,7 +17,13 @@ fingerprints/**
 !fingerprints/g2b_go_kr/profile.json
 !fingerprints/g2b_go_kr/recipe.md
 !fingerprints/guesskorea_com/profile.json
+!fingerprints/ip-navi_or_kr/profile.json
+!fingerprints/kipa_org/profile.json
+!fingerprints/kipi_or_kr/profile.json
+!fingerprints/kista_re_kr/profile.json
+!fingerprints/koipa_re_kr/profile.json
 !fingerprints/made-in-china_com/profile.json
+!fingerprints/moip_go_kr/profile.json
 !fingerprints/wanted_co_kr/profile.json
 !fingerprints/www_11st_co_kr/profile.json
 !fingerprints/www_fss_or_kr/profile.json

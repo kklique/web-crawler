@@ -1,0 +1,37 @@
+{
+  "domain": "koipa.re.kr",
+  "capability": "session",
+  "fetcher_type": "playwright_spa_intercept",
+  "antibot_type": "spa_session",
+  "antibot_strategy": "playwright_intercept",
+  "site_type": "spa_session",
+  "selectors": {},
+  "pagination": {
+    "type": "ajax_post",
+    "param": "currentPage"
+  },
+  "api_endpoints": [
+    {
+      "url": "/home/board/ajax/list.do?menu_cd=000041",
+      "method": "POST",
+      "params": {
+        "searchText": "",
+        "searchData": "contdata",
+        "currentPage": "N",
+        "deCode": "",
+        "num": "",
+        "dataCate": ""
+      },
+      "field_mapping": {
+        "num": "상세URL(num)",
+        "title": "사업명칭",
+        "write_dt": "사업공고일",
+        "receive_start_dt": "신청기간(시작)",
+        "receive_end_dt": "신청기간(종료)",
+        "status": "마감여부(ing=진행중)"
+      }
+    }
+  ],
+  "notes": "사업공고 게시판(menu_cd=000041). 목록 JSON은 POST /home/board/ajax/list.do 가 갖고 있고 필드가 완벽함(write_dt/receive_start_dt/receive_end_dt/status) — 상세페이지 방문 불필요. 단 이 엔드포인트는 비-브라우저 HTTP 클라이언트를 연결 단계에서 거부함(curl_cffi impersonate=chrome로도 동일하게 \"Empty reply from server\") — TLS 지문이 아니라 브라우저 세션 컨텍스트(Sec-Fetch-* 등)가 필요한 사다리 3단 패턴으로 판단, 안티봇 우회 아님(통지 불필요). crawl_script.py 에서 Playwright로 브라우저를 띄워 페이지 컨텍스트 안에서 동일 $.post 를 호출해 JSON을 그대로 받음. 상세 URL은 /home/board/brdDetail.do?menu_cd=000041&num=<num>.",
+  "last_used": "2026-09-04"
+}

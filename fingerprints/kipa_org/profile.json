@@ -1,0 +1,25 @@
+{
+  "domain": "kipa.org",
+  "capability": "static",
+  "fetcher_type": "Fetcher",
+  "antibot_type": "none",
+  "antibot_strategy": "none",
+  "site_type": "static",
+  "selectors": {
+    "list_row": "table.list_table tbody tr",
+    "title": "td.title a::text",
+    "href": "td.title a::attr(href)",
+    "start_date": "td:nth-child(3)",
+    "end_date": "td:nth-child(4)",
+    "reg_date": "td:nth-child(5)"
+  },
+  "pagination": {
+    "type": "url_param",
+    "param": "pager.offset",
+    "step": 10,
+    "extra": "mode=list&board_no=28"
+  },
+  "api_endpoints": [],
+  "notes": "공지사항 게시판(board_no=28). GET만으로 목록 전부 확인 가능(시작일/종료일/등록일 모두 목록에 있음 — 상세페이지 방문 불필요). 신청기간=시작일~종료일, 마감여부=종료일<오늘. 주관기관은 사이트 자체가 한국발명진흥회(KIPA)라 고정값 사용. 등록일 내림차순 정렬 확인됨 — 날짜 역행 시 조기 종료 가능.",
+  "last_used": "2026-09-04"
+}
